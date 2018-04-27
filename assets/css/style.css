@@ -1,0 +1,416 @@
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu5mxKOzY.woff2) format('woff2');
+  unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7mxKOzY.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4WxKOzY.woff2) format('woff2');
+  unicode-range: U+0370-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7WxKOzY.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu7GxKOzY.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxK.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+    background: url(/assets/img/bg.png);
+}
+
+ul li {
+    list-style: none;
+}
+
+
+.navbar-right li a {
+    font-size: 16px;
+}
+
+.navbar-default {
+    background: transparent;
+    border-radius: 0;
+    margin-bottom: 0;
+    padding: 10px 0;
+    border: 0;
+}
+
+.panel-body {
+    padding: 30px;
+}
+
+.panel-primary {
+    border: 1px solid #eee;
+    box-shadow: none;
+    border-bottom: 3px solid #337ab7;
+}
+
+.panel-default {
+    border-top: 3px solid #337ab7;
+    box-shadow: none !important;
+}
+
+.panel-default>.panel-heading {
+    background: #fff;
+    padding: 15px;
+    padding: 30px 15px 20px;
+}
+
+.panel-default>.panel-footer {
+    background: #fff;
+    padding: 20px 30px 30px;
+}
+
+#signupHere {
+    margin: 0;
+}
+
+#userLogin .h3 {
+    margin: 0;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#userLogin {
+    padding-top: 40px;
+}
+
+#userLogin .btn {
+    font-size: 16px;
+}
+#userLogin .text-center,
+#userLogin .form-group:last-child {
+    margin-bottom: 0 !important;
+}
+
+#userLogin .btn-info,
+#userLogin .btn-primary,
+#userLogin .btn-danger {
+    width: 100%;
+}
+
+#signupHere {
+    font-size: 16px;
+}
+
+#signupHere a {
+    margin-left: 5px;
+}
+
+#userLogin .alert {
+    margin-bottom: 0;
+}
+.error {
+    font-weight: bold;
+}
+
+.banner .btn-danger {
+    color: #fff;
+}
+
+
+.profile{
+    border: 3px solid #B7B7B7;
+    padding: 10px;
+    margin-top: 10px;
+    width: 350px;
+    background-color: #F7F7F7;
+    height: 160px;
+}
+.profile p{margin: 0px 0px 10px 0px;}
+.head{margin-bottom: 10px;}
+.head a{float: right;}
+.profile img{width: 100px;float: left;margin: 0px 10px 10px 0px;}
+.proDetails{float: left;}
+
+.navbar-form .input-group>.form-control {
+    width: 300px;
+}
+
+
+.banner {
+    background: #d9534f;
+    color: #fff;
+    width: 100%;
+    padding: 25px;
+    height: 400px;
+}
+
+.banner form input {
+    height: 50px;
+    font-size: 16px;
+}
+
+.banner button {
+    height: 50px;
+    color: #777;
+    font-size: 16px;
+}
+
+.navbar-default .navbar-nav>li>.btn-danger:focus,
+.navbar-default .navbar-nav>li>.btn-danger:hover {
+    color: #eee;
+    background-color: #a94442;
+}
+.navbar-default .btn-primary:hover {
+    background: #2e6da4 !important;
+}
+
+.navbar-default .btn-primary {
+    color: #eee !important;
+}
+
+.navbar-default .btn-link {
+    color: #eee;
+}
+
+.navbar-default .btn-link:hover
+.navbar-default .btn-link:active {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a,
+.navbar-brand,
+.navbar-default .btn-primary,
+.navbar-default .btn-link {
+    padding: 10px;
+    height: auto;
+}
+
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+.navbar-default .navbar-nav>li>.btn-danger,
+.navbar-default .btn-primary {
+    color: #fff;
+    margin-left: 10px;
+}
+
+.banner {
+    position: relative;
+}
+
+.abcRioButtonBlue {
+    width: 100% !important;
+}
+
+.dropdown-menu .divider {
+    margin: 5px 0px;
+}
+
+h1 {
+    font-size: 26px;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 30px;
+}
+
+#form1 input[type="file"] {
+    background: #eee;
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+.dropdown-menu li a {
+    font-size: 14px;
+}
+
+.banner input {
+    border: 0;
+}
+
+.banner .btn {
+    width: 100px;
+}
+
+.error,
+#userLogin .text-success {
+    margin: 10px 0;
+}
+
+.btn {border: 0 !important;}
+
+.content {
+    background: #fff;
+    box-shadow: 3px 4px 10px -2px #333;
+    margin-top: 50px;
+    padding: 0;
+}
+
+#form1 img {
+    margin: 0 auto;
+}
+
+#chatBody {
+    width: 100%;
+    height: 500px;
+    overflow-x: hidden;
+    text-align: left;
+}
+
+#chatBody span {
+    background-color: #eee;
+    border-radius: 10px;
+    /* margin: 10px; */
+    display: table;
+    max-width: 80%;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+#authMsg {
+    background: #333;
+    padding: 20px;
+    text-align: left;
+    color: #fff;
+}
+
+p {
+    margin: 0;
+}
+
+#chatHeader {
+    background: #f4645f;
+    color: #fff;
+    font-family: Roboto;
+    font-size: 18px;
+    padding: 10px;
+    text-align: left;
+}
+
+#userLogin .panel-heading a {
+    color: #333;
+}
+#userLogin .panel-heading a:hover {
+    text-decoration: none;
+}
+
+.chatBody {
+    padding: 20px;
+    
+}
+#chatBox {
+    position: relative;
+}
+#chatBox button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin: auto;
+    display: block;
+    border-radius: 0;
+    height: 32px;
+}
+textarea.form-control {
+    resize: none;
+    border-radius: 0;
+    overflow-y: hidden;
+    padding-right: 57px;
+    height: 100px;
+}
+.navbar-toggle {
+    border: none !important;
+    margin-top: 0;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background: #fff !important;
+}
+
+
+#chatBody p {
+    padding: 5px 10px;
+}
+
+#chatBody b {
+    margin-right: 5px;
+}
+
+
+.chatDate {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 7px;
+    color: #777;
+    display: block;
+    clear: both;
+}
+
+.me {
+    text-align: right;
+}
+
+.me span {
+    background: #FF7182 !important;
+    color: #fff;
+    float: right;
+    text-align: left;
+}
+
+
+
+@media (max-width: 767px) {
+    
+    .navbar-form .input-group>.form-control {
+        width: 100%;
+    }
+    .navbar-default .navbar-nav>li>.btn-danger {
+        margin-left: 0;
+    }
+    .navbar-default .navbar-right li:last-child {
+        padding: 0 2%;
+    }
+    #userLogin {
+        padding-top: 15px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+    .content {
+        margin: 0;
+        margin-bottom: 20px;
+    }
+}
