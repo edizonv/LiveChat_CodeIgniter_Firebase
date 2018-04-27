@@ -22,7 +22,17 @@ function onSuccess(googleUser) {
             type: "POST",
             data: postForm
         }).success(function(res) {
+          
+          if (res != "emailExist") {
             window.location = "/main";
+          } else {
+            $('#googleloginError').html('<div class="form-group"><p class="error text-danger">Email Exist!</p></div>');
+            var auth2 = gapi.auth2.getAuthInstance().signOut();
+            auth2.then(function () {
+              console.log('User signed out.');
+              $('.abcRioButtonContents span').html  ('Sign in with Google');
+            });
+          }
         });
         
     });

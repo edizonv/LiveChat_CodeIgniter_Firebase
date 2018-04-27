@@ -30,6 +30,7 @@
                                 <p class="error text-danger"><?php echo $this->session->flashdata('msg'); ?></p>
                             <?php endif; ?>
                         </div>
+                        <div class="form-group" id="googleloginError"></div>
                     <?php echo form_close(); ?>
                 </div>
                 <div class="panel-footer">

@@ -31,6 +31,9 @@ class Users_model extends CI_Model {
             ];
             $loginWithGoogle = $this->db->insert($this->usersTable, $data);
             return $loginWithGoogle;
+        } else {
+            echo "emailExist";
+            exit;
         }
     }
 

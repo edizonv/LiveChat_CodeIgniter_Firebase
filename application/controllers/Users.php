@@ -54,8 +54,9 @@ class Users extends CI_Controller {
 
 	function insertGoogleInfo() {
 		$data = $this->input->post();
-		$this->Users_model->loginWithGoogle($data);
-		$this->session->set_userdata('userSessId', $data['user_uname']);
+		if ($this->Users_model->loginWithGoogle($data) ) {
+			$this->session->set_userdata('userSessId', $data['user_uname']);
+		}
 	}
 
 	function logout() {

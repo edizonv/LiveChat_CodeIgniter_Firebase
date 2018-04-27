@@ -19,7 +19,7 @@
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" name="email" id="email" class="form-control" placeholder="Enter Lastname" required>
+              <input type="text" name="email" id="email" class="form-control" placeholder="Enter Email" required>
             </div>
             <div class="form-group">
               <div class="g-recaptcha" data-sitekey="6LdWMVIUAAAAABQesB7lf1-HY4o7bnzKu0V5EIbQ" data-callback="enableUserBtn"></div>
