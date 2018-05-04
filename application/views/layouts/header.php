@@ -62,6 +62,7 @@
         <?php else: ?>
           <?php if($this->uri->segment(1) != "users" && $this->uri->segment(2) != "login"): ?>
             <li><a href="<?php echo base_url().'users/login' ?>" id="mustLogin">Login</a></li>
+            <li><a href="<?php echo base_url().'users/signup' ?>" id="mustSignUp">Sign Up</a></li>
           <?php endif; ?>
         <?php endif; ?>
       </ul>

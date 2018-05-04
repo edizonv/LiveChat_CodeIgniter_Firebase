@@ -31,6 +31,9 @@ class Users extends CI_Controller {
 					$password = $formData['userPass'];
 					if (password_verify($password, $userPass) ) {
 						$this->session->set_userdata('userSessId', $userUname);
+						if($getUser->user_position == 0) {
+							$this->session->set_userdata('userPositionSessId', $getUser->position);
+						}
 						redirect(base_url().'main' );
 					}
 					else {
@@ -54,9 +57,9 @@ class Users extends CI_Controller {
 
 	function insertGoogleInfo() {
 		$data = $this->input->post();
-		if ($this->Users_model->loginWithGoogle($data) ) {
-			$this->session->set_userdata('userSessId', $data['user_uname']);
-		}
+		$this->Users_model->loginWithGoogle($data);
+		$this->session->set_userdata('userSessId', $data['user_uname']);
+		
 	}
 
 	function logout() {

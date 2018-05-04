@@ -6,7 +6,7 @@ class Users_model extends CI_Model {
 
     function loginValidation($data) {
         $loginValidation = $this->db
-            ->select('user_uname AS uname, user_pw AS upass')
+            ->select('user_uname AS uname, user_pw AS upass, user_position AS position')
             ->from($this->usersTable)
             ->where('user_uname', $data['userId'])
             ->where('user_status', 1)
@@ -32,8 +32,7 @@ class Users_model extends CI_Model {
             $loginWithGoogle = $this->db->insert($this->usersTable, $data);
             return $loginWithGoogle;
         } else {
-            echo "emailExist";
-            exit;
+           
         }
     }
 
@@ -45,14 +44,14 @@ class Users_model extends CI_Model {
             ->num_rows();
         if ($ifExists == 0) {
             $newEmail = explode('@',  $data['email']);
-            $newName = $newEmail[0].'_'.mt_rand();
+            $newName = $newEmail[0].substr(mt_rand(), 5);
             $newPass = $data['newPass'];
 
             $this->load->library('email');
             $this->email->from('edizon.villegas@transcosmos.com.ph', 'Store');
             $this->email->to($data['email']);
             $this->email->subject('Email Activation');
-            $this->email->message('Hi'. $data['fname'] . ' ' . $data['lname'] . '! <br><br>Here is your Username : '.$newName.' <br>Click the link to activate your account. <a href="https://buyandsellstore.000webhostapp.com/users/activate/'.urlencode(substr($newPass, -10) ).'">https://buyandsellstore.000webhostapp.com/users/activate/'.urlencode(substr($newPass, -10) ).'</a>');
+            $this->email->message('Hi'. $data['fname'] . ' ' . $data['lname'] . '! <br><br>Here is your Username : '.$newName.' <br>Click the link to activate your account. <a href="https://buyandsellstore.000webhostapp.com/users/activate/'.urlencode(substr($newPass, -5) ).'">https://buyandsellstore.000webhostapp.com/users/activate/'.urlencode(substr($newPass, -5) ).'</a>');
             $this->email->set_mailtype('html');
             $this->email->send();
             

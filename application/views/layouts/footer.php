@@ -23,16 +23,9 @@ function onSuccess(googleUser) {
             data: postForm
         }).success(function(res) {
           
-          if (res != "emailExist") {
+
             window.location = "/main";
-          } else {
-            $('#googleloginError').html('<div class="form-group"><p class="error text-danger">Email Exist!</p></div>');
-            var auth2 = gapi.auth2.getAuthInstance().signOut();
-            auth2.then(function () {
-              console.log('User signed out.');
-              $('.abcRioButtonContents span').html  ('Sign in with Google');
-            });
-          }
+
         });
         
     });
@@ -69,16 +62,21 @@ function signOut() {
     });
 }
 
-var onLoad = function() {
 
-    var dbRef = firebase.database().ref('chats');
-    if (document.getElementById('loginAs')) {
+var loadChat = function() {
+
+   if (document.getElementById('loginAs')) {
       var getUserSessId = document.getElementById('loginAs').innerHTML;
     }
+
+  var dbRef = firebase.database().ref('chats').orderByChild('chatName').equalTo(getUserSessId);
+   
+    dbRef.off();
     dbRef.on('child_added', function(snapshot) {
-        var data = snapshot.val(),
-        $childData = document.createElement("p");
-        if (data.chatName == getUserSessId) {
+      var data = snapshot.val(),
+      $childData = document.createElement("p");
+   
+        if (data.chatName == getUserSessId && data.chatReplyBy != "Edizon") {
           $childData.className += data.chatName + ' ' + "me";
           $childData.innerHTML += "<span>" +data.chatMsg+"</span>";
         } else {
@@ -86,40 +84,120 @@ var onLoad = function() {
           $childData.innerHTML += "<b>"+data.chatName+ "</b><span>" +data.chatMsg+"</span>";
         }
         $childData.innerHTML += "<div class='chatDate'>"+data.chatDate+"</div>";
-        document.getElementById("chatBody").append($childData);
-
-       
+     
+      document.getElementById("chatBody").append($childData);
     });
 
- 
 
 }
-onLoad();
+
+loadChat();
+
+
+function chatUser(val) {
+  document.getElementById("chatBody").innerHTML = "";
+  document.getElementById("chatHeader").innerHTML = val;
+  document.getElementById("chatTo").value = val;
+  
+
+   var dbRef = firebase.database().ref('chats').orderByChild('chatName').equalTo(val);
+    if (document.getElementById('loginAs')) {
+      var getUserSessId = document.getElementById('loginAs').innerHTML;
+    }
+    dbRef.off();
+    dbRef.on('child_added', function(snapshot) {
+      var data = snapshot.val(),
+      $childData = document.createElement("p");
+     // if (data.chatName == val && data.chatReplyBy == "Edizon") {
+        if (data.chatReplyBy == getUserSessId) {
+          $childData.className += data.chatReplyBy + ' ' + "me";
+          $childData.innerHTML += "<span>" +data.chatMsg+"</span>";
+        } else {
+          $childData.className += data.chatName;
+          $childData.innerHTML += "<b>"+data.chatName+ "</b><span>" +data.chatMsg+"</span>";
+        }
+        $childData.innerHTML += "<div class='chatDate'>"+data.chatDate+"</div>";
+      //}
+      document.getElementById("chatBody").append($childData);
+    });
+}
+
+
+
+
+
+var loadUsers = function() {
+  var dbRef3 = firebase.database().ref('chats');
+  if (document.getElementById('loginAs')) {
+    var getUserSessId = document.getElementById('loginAs').innerHTML;
+  }
+  dbRef3.on('child_added', function(snapshot2) {
+    var data2 = snapshot2.val(),
+    
+        $userslist = document.createElement("li");
+     
+        if(getUserSessId != data2.chatName) {
+          $userslist.innerHTML += '<button onclick="chatUser(&apos;'+data2.chatName+'&apos;)" value='+data2.chatName+'>'+data2.chatName+'</a>';
+        }
+     
+   
+    document.getElementById("users").append($userslist);
+  });
+}
+
+loadUsers();
+
+
+
 
 //insert user
 function saveUser() {
-
-  
-  var uid = firebase.database().ref().child('chat').push().key,
+  var uid = firebase.database().ref('chats').push().key,
       msg = document.getElementById('chatMsg').value;
-      user = document.getElementById('user').value;
+
+    if(document.getElementById('chatTo') ) {
+      chatTo = document.getElementById('chatTo').value
+      var chatter = document.getElementById("chatHeader").innerHTML;
+    } else {
+      chatTo = "Edizon";
+    }
+    
+
+      
+      if (document.getElementById('loginAs')) {
+        var getUserSessId = document.getElementById('loginAs').innerHTML;
+      }
+      
+
       if (msg == "") {
         msg = 'Guys im gay, and im proud of it!';
       }
-      data = {
-        chatId : uid,
-        chatName : user,
-        chatDate : new Date().toLocaleString(),
-        chatMsg : msg
-      },
-      updates = {};
+      if(document.getElementById('chatTo') ) {
+        data = {
+          chatId : uid,
+          chatName : chatter,
+          chatDate : new Date().toLocaleString(),
+          chatMsg : msg,
+          chatReplyBy: 'Edizon'
+        },
+        updates = {};
+      } else {
+        data = {
+          chatId : uid,
+          chatName : getUserSessId,
+          chatDate : new Date().toLocaleString(),
+          chatMsg : msg
+        },
+        updates = {};
+      }
   updates['/chats/' + uid] = data;
   firebase.database().ref().update(updates);
   document.getElementById('chatMsg').value = "";
 
 
-   var objDiv = document.getElementById("chatBody");
-objDiv.scrollTop = objDiv.scrollHeight;
+  //always show the latest chat
+  var objDiv = document.getElementById("chatBody");
+  objDiv.scrollTop = objDiv.scrollHeight;
 
 }
 
